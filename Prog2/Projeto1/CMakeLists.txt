@@ -9,4 +9,6 @@ add_executable(Prog2 main.c
         ../libprg/src/include/libprg/Pilha.h
         ../libprg/src/libprg/Pilha.c
         ../libprg/src/libprg/Fila_linear.c RPN.c RPN.h
-        ../Projeto2/main2.c ../libprg/src/libprg/Lista_encadeada.c ../libprg/src/include/libprg/Lista_encadeada.h ../libprg/src/libprg/ContingSort.c)
+        ../libprg/src/libprg/Lista_encadeada.c
+        ../libprg/src/include/libprg/Lista_encadeada.h
+        ../libprg/src/libprg/ContingSort.c)
