@@ -23,6 +23,7 @@ typedef struct no{
 void adicionar(no_t** inicio, int dado);
 bool remover(no_t** inicio, int dado);
 void destruir(no_t** inicio);
+no_t* buscar(no_t** inicio, int dado);
 
 void tempo(clock_t start,struct timeval inicio);
 void countingSort(int aux[], int n);

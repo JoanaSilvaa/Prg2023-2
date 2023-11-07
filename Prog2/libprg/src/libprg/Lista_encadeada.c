@@ -10,10 +10,21 @@ void adicionar(no_t** inicio, int dado){
     *inicio = novo;
 }
 // buscar por dados
-no_t* buscar(no_t* inicio, int dado){
-// ...
-}
 
+//BUSCA NÃO ORDENADA
+no_t* buscar(no_t** inicio, int dado){
+    //no_t atual = *inicio;
+    no_t* atuall = *inicio;
+    while(atuall != NULL){
+        printf("end: %p => %d\n",atuall,atuall->dado);
+        if(atuall->dado == dado){
+            printf("achou");
+        }
+        else{
+            atuall = atuall->proximo;
+        }
+    }
+}
 bool remover(no_t** inicio, int dado){
     no_t* atual = *inicio;
     no_t* anterior = NULL;
@@ -42,4 +53,3 @@ void destruir(no_t** inicio){
     }
     *inicio = NULL;
 }
-
