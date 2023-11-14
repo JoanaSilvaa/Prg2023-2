@@ -61,14 +61,70 @@ void destruir(no_t** inicio){
     }
     *inicio = NULL;
 }
-/*
-void adicionar_ordenada(no_t** inicio, int dado){
-    no_t* novo = (no_t*) malloc(sizeof (no_t));
-    while(inicio != NULL) {
-        if (novo->dado <= dado) {
-            novo->dado = dado;
-            novo->proximo = *inicio;
-        }
+int tamanho_no_t (no_t** inicio){
+    if(inicio == NULL)
+        return 0;
+        int cont = 0;
+        no_t* atual = *inicio;
+    while (atual != NULL){
+        cont ++;
+        atual = atual->proximo;
     }
-    *inicio = novo;
-}*/
+    return cont;
+}
+int adicionar_ordenada(no_t** inicio, int dado){
+    if(inicio == NULL){
+        return 0;
+    }
+    no_t* novo = (no_t*) malloc(sizeof (no_t));
+    if(novo == NULL){
+        return 0;
+    }
+    novo->dado = dado;
+    if(*inicio == NULL){ // lista vazia
+        novo->proximo = NULL;
+        *inicio = novo;
+        return 1;
+    }
+    else{
+        no_t *anterior, *atual = *inicio;
+        while(atual != NULL && atual->dado < dado){
+                anterior = atual;
+                atual = atual->proximo;
+            }
+        if(atual == *inicio){ //insere no incio
+            novo->proximo = (*inicio);
+            *inicio = novo;
+        } else{
+            novo->proximo = atual;
+            anterior->proximo = novo;
+        }
+        return 1;
+    }
+}
+
+int remover_ordenada(no_t** inicio, int dado) {
+    if (inicio == NULL) {
+        return 0;
+    }
+    if (*inicio == NULL) { // lista vazia
+        return 0;
+    }
+    no_t  *anterior, *atual = *inicio;
+    while (atual != NULL && atual->dado != dado){
+        anterior = atual;
+        atual = atual->proximo;
+    }
+    if(atual == NULL){
+        //Não encontrado
+        return 0;
+    }
+    else if(atual == *inicio){
+        *inicio = atual->proximo;
+    }
+    else{
+        anterior->proximo = atual->proximo;
+        free(atual);
+        return 1;
+    }
+}

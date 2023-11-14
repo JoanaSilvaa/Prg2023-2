@@ -25,9 +25,11 @@ bool remover(no_t** inicio, int dado);
 void destruir(no_t** inicio);
 int buscar(no_t** inicio, int dado);
 no_t* imprime(no_t** inicio);
+int tamanho_no_t (no_t** inicio);
 
 
-void adicionar_ordenada(no_t** inicio, int dado);
+int adicionar_ordenada(no_t** inicio, int dado);
+int remover_ordenada(no_t** inicio, int dado);
 
 void tempo(clock_t start,struct timeval inicio);
 void countingSort(int aux[], int n);
