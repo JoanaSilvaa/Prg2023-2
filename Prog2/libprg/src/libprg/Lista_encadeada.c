@@ -128,3 +128,4 @@ int remover_ordenada(no_t** inicio, int dado) {
         return 1;
     }
 }
+

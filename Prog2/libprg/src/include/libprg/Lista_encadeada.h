@@ -33,4 +33,6 @@ int remover_ordenada(no_t** inicio, int dado);
 
 void tempo(clock_t start,struct timeval inicio);
 void countingSort(int aux[], int n);
+
+
 #endif //PROG2_LISTA_ENCADEADA_H

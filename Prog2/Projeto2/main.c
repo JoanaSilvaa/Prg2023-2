@@ -5,13 +5,28 @@
 #include "../libprg/src/include/libprg/Lista_encadeada.h"
 #include "Interface.h"
 
-int main() {
+void ordenação(struct usuario *z, int x){
+    int i, j;
+    struct usuario aux;
 
+    for (i = j; j < 0 && (strcmp(aux.nome,z[j-i].nome)); j--) {
+        z[j] = z[j-i];
+        z[j]=aux;
+    }
+}
+int main(){
+    struct usuario nomes;
+
+    nomes.nome[0] = 'j';
+}
+
+/*
+int main() {
     //Declarações
     int i = 0;
     FILE *arq;
-    entrada entradas;
-    clock_t start;
+    Entrada entradas;
+    no_t** inicio;
 
     //menu
     printf("Login: ");
@@ -22,8 +37,8 @@ int main() {
 
     //abertura do arquivo
     if ((arq = fopen("../database (1).dat", "r")) != NULL){
-                // Inicializando a leitura
-        Leitura(arq,i,entradas);
+        // Inicializando a leitura
+        leitura_arq(arq,i,entradas,&inicio);
         //Após leitura
         erro();
 
@@ -33,7 +48,5 @@ int main() {
         fprintf(stderr, "Erro: arquivo nao pode ser aberto\n");
         exit(EXIT_FAILURE);
     }
-    //Fechando o arquivo
-    fclose(arq);
     return 0;
-}
+}*/
