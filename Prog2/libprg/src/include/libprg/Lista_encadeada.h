@@ -14,11 +14,14 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>
+#include <string.h>
 
 typedef struct no{
     int dado;
+    char dados;
     struct no* proximo;
 } no_t;
+
 
 void adicionar(no_t** inicio, int dado);
 bool remover(no_t** inicio, int dado);
@@ -27,12 +30,13 @@ int buscar(no_t** inicio, int dado);
 no_t* imprime(no_t** inicio);
 int tamanho_no_t (no_t** inicio);
 
-
+no_t* imprime_string(no_t** inicio);
 int adicionar_ordenada(no_t** inicio, int dado);
 int remover_ordenada(no_t** inicio, int dado);
 
 void tempo(clock_t start,struct timeval inicio);
 void countingSort(int aux[], int n);
+int Compara(no_t** inicio,struct no parametro);
 
 
 #endif //PROG2_LISTA_ENCADEADA_H

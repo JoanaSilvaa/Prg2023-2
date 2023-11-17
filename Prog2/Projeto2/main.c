@@ -3,23 +3,28 @@
 //
 #include <stdio.h>
 #include "../libprg/src/include/libprg/Lista_encadeada.h"
+#include <string.h>
 #include "Interface.h"
 
-void ordenação(struct usuario *z, int x){
-    int i, j;
-    struct usuario aux;
-
-    for (i = j; j < 0 && (strcmp(aux.nome,z[j-i].nome)); j--) {
-        z[j] = z[j-i];
-        z[j]=aux;
-    }
-}
 int main(){
-    struct usuario nomes;
+// inicio precisa ser um ponteiro
+    no_t* inicio = NULL;
+    no_t nome, nome2, nome3;
+    nome.dados = 'k';
+    nome2.dados = 'l';
+    nome3.dados = 'j';
 
-    nomes.nome[0] = 'j';
+// adicionando
+    Compara(&inicio,nome);
+    Compara(&inicio,nome2);
+    Compara(&inicio,nome3);
+
+// listando
+    imprime_string(&inicio);
+
+    destruir(&inicio);
+    return 0;
 }
-
 /*
 int main() {
     //Declarações
@@ -38,7 +43,7 @@ int main() {
     //abertura do arquivo
     if ((arq = fopen("../database (1).dat", "r")) != NULL){
         // Inicializando a leitura
-        leitura_arq(arq,i,entradas,&inicio);
+        leitura(arq,i,entradas);
         //Após leitura
         erro();
 

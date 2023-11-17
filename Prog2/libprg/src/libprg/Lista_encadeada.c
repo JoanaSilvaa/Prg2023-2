@@ -3,6 +3,7 @@
 //
 #include "../include/libprg/Lista_encadeada.h"
 
+
 void adicionar(no_t** inicio, int dado){
     no_t* novo = (no_t*) malloc(sizeof (no_t));
     novo->dado = dado;
@@ -33,6 +34,13 @@ no_t* imprime(no_t** inicio){
     }
 }
 
+no_t* imprime_string(no_t** inicio){
+    no_t* atuall = *inicio;
+    while(atuall != NULL){
+        printf("%c ", atuall->dados);
+        atuall = atuall->proximo;
+    }
+}
 bool remover(no_t** inicio, int dado){
     no_t* atual = *inicio;
     no_t* anterior = NULL;
@@ -96,6 +104,39 @@ int adicionar_ordenada(no_t** inicio, int dado){
             novo->proximo = (*inicio);
             *inicio = novo;
         } else{
+            novo->proximo = atual;
+            anterior->proximo = novo;
+        }
+        return 1;
+    }
+}
+
+
+int Compara(no_t** inicio,struct no parametro){
+    if(inicio == NULL){
+        return 0;
+    }
+    no_t* novo = (no_t*) malloc(sizeof (no_t));
+    if(novo == NULL){
+        return 0;
+    }
+    novo->dados = parametro.dados;
+
+    if(*inicio == NULL){ // lista vazia
+        novo->proximo = NULL;
+        *inicio = novo;
+        return 1;
+    }
+    else{
+        no_t *anterior, *atual = *inicio;
+        while(atual != NULL && atual->dados < parametro.dados && strncmp(atual->dados, parametro->dados, sizeof(atual->dados)) > 0){
+            anterior = atual;
+            atual = atual->proximo;
+        }
+        if((strncmp(&fraseS.dados, &parametro.dados, sizeof(fraseS.dados))) == 0){
+            return 1;
+        }
+        else{
             novo->proximo = atual;
             anterior->proximo = novo;
         }
