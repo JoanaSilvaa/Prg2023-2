@@ -32,15 +32,18 @@ no_t* imprime(no_t** inicio){
         printf("%d ", atuall->dado);
         atuall = atuall->proximo;
     }
+    return 0;
 }
 
 no_t* imprime_string(no_t** inicio){
     no_t* atuall = *inicio;
     while(atuall != NULL){
-        printf("%c ", atuall->dados);
+        printf("%s\n", atuall->dados);
         atuall = atuall->proximo;
     }
+    return 0;
 }
+
 bool remover(no_t** inicio, int dado){
     no_t* atual = *inicio;
     no_t* anterior = NULL;
@@ -59,6 +62,7 @@ bool remover(no_t** inicio, int dado){
     }
     return false;
 }
+
 void destruir(no_t** inicio){
     no_t* atual = *inicio;
     no_t* prox;
@@ -69,10 +73,11 @@ void destruir(no_t** inicio){
     }
     *inicio = NULL;
 }
+
 int tamanho_no_t (no_t** inicio){
     if(inicio == NULL)
         return 0;
-        int cont = 0;
+    int cont = 0;
         no_t* atual = *inicio;
     while (atual != NULL){
         cont ++;
@@ -80,6 +85,7 @@ int tamanho_no_t (no_t** inicio){
     }
     return cont;
 }
+
 int adicionar_ordenada(no_t** inicio, int dado){
     if(inicio == NULL){
         return 0;
@@ -111,32 +117,38 @@ int adicionar_ordenada(no_t** inicio, int dado){
     }
 }
 
-
-int Compara(no_t** inicio,struct no parametro){
+int Compara(no_t** inicio,struct tipo parametro){
     if(inicio == NULL){
         return 0;
     }
-    no_t* novo = (no_t*) malloc(sizeof (no_t));
+    no_t *novo;
+    novo = (no_t*) malloc(sizeof (no_t));
+
     if(novo == NULL){
         return 0;
     }
-    novo->dados = parametro.dados;
 
-    if(*inicio == NULL){ // lista vazia
+    for (int i = 0; i < 4; ++i) {
+        novo->dados[i] = parametro.dados[i];
+    }
+
+    if((*inicio) == NULL){ // lista vazia
         novo->proximo = NULL;
         *inicio = novo;
         return 1;
     }
     else{
         no_t *anterior, *atual = *inicio;
-        while(atual != NULL && atual->dados < parametro.dados && strncmp(atual->dados, parametro->dados, sizeof(atual->dados)) > 0){
+        int a = 0;
+        a = strncmp(parametro.dados, atual->dados, sizeof(inicio));
+        while(atual != NULL && strncmp(parametro.dados, atual->dados, sizeof(inicio)) < 0){
             anterior = atual;
             atual = atual->proximo;
         }
-        if((strncmp(&fraseS.dados, &parametro.dados, sizeof(fraseS.dados))) == 0){
-            return 1;
+        if(strncmp(parametro.dados, atual->dados, sizeof(inicio)) == 0){
+            //palavra ja esta na lista
         }
-        else{
+        else {
             novo->proximo = atual;
             anterior->proximo = novo;
         }
@@ -156,17 +168,16 @@ int remover_ordenada(no_t** inicio, int dado) {
         anterior = atual;
         atual = atual->proximo;
     }
-    if(atual == NULL){
+    if(atual == NULL) {
         //Não encontrado
         return 0;
-    }
-    else if(atual == *inicio){
+    } else if(atual == *inicio) {
         *inicio = atual->proximo;
-    }
-    else{
+    } else {
         anterior->proximo = atual->proximo;
         free(atual);
         return 1;
     }
+    return 0;
 }
 

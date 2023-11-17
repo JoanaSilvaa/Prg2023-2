@@ -14,4 +14,5 @@ add_executable(Prog2 main.c
         ../libprg/src/libprg/ContingSort.c
         ../libprg/src/include/libprg/Lista_encadeada.h
         Interface.h
+        ../libprg/src/include/libprg/Lista_encadeada.h
 )

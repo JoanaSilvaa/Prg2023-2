@@ -6,23 +6,54 @@
 #include <string.h>
 #include "Interface.h"
 
+int compara_letra(struct tipo Nome, no_t *inicio){
+    if(strncmp(Nome.dados, inicio->dados, sizeof(*inicio)) < 0) {
+        return 1;
+    }
+    else{
+        return 0;
+    }
+}
 int main(){
 // inicio precisa ser um ponteiro
     no_t* inicio = NULL;
-    no_t nome, nome2, nome3;
-    nome.dados = 'k';
-    nome2.dados = 'l';
-    nome3.dados = 'j';
+    struct tipo nome, nome2;
+    nome.dados[0] = 'n';
+    nome.dados[1] = 'o';
+    nome.dados[2] = 'm';
+    nome.dados[3] = 'e';
 
-// adicionando
-    Compara(&inicio,nome);
-    Compara(&inicio,nome2);
-    Compara(&inicio,nome3);
+    nome2.dados[0] = 'v';
+    nome2.dados[1] = 'b';
+    nome2.dados[2] = 'h';
+    nome2.dados[3] = 'a';
+
+    for (int n = 0; n < 2 ; n++)
+        if (strncmp (nome.dados,"nome",4) == 0)
+        {
+            printf ("Achou %s\n",nome.dados);
+        } else {
+            printf("Não achou\n");
+        }
+
+    int r = strncmp(nome.dados, nome2.dados, 4);
+    printf("%d\n", r);
+
+    if (strncmp(nome.dados, nome2.dados, 4) < 0) {
+            printf("%s\n", nome.dados);
+    } else if (strncmp(nome.dados, nome2.dados, 4) > 0) {
+            printf("%s\n", nome2.dados);
+    } else {
+        printf("São iguais\n");
+    }
+
+    //Compara(&inicio, nome);
+   // Compara(&inicio, nome2);
 
 // listando
-    imprime_string(&inicio);
+    //imprime_string(&inicio);
 
-    destruir(&inicio);
+    //destruir(&inicio);
     return 0;
 }
 /*

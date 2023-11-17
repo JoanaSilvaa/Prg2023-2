@@ -18,9 +18,15 @@
 
 typedef struct no{
     int dado;
-    char dados;
+    char dados[10];
     struct no* proximo;
 } no_t;
+
+typedef struct tipo{
+    int dado;
+    char dados[10];
+    struct no* proximo;
+} tipo;
 
 
 void adicionar(no_t** inicio, int dado);
@@ -36,7 +42,7 @@ int remover_ordenada(no_t** inicio, int dado);
 
 void tempo(clock_t start,struct timeval inicio);
 void countingSort(int aux[], int n);
-int Compara(no_t** inicio,struct no parametro);
+int Compara(no_t** inicio,struct tipo parametro);
 
 
 #endif //PROG2_LISTA_ENCADEADA_H
