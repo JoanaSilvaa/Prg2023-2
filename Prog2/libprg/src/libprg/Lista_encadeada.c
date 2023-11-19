@@ -128,7 +128,7 @@ int Compara(no_t** inicio,struct tipo parametro){
         return 0;
     }
 
-    for (int i = 0; i < 4; ++i) {
+    for (int i = 0; i < 3; ++i) {
         novo->dados[i] = parametro.dados[i];
     }
 
@@ -139,16 +139,14 @@ int Compara(no_t** inicio,struct tipo parametro){
     }
     else{
         no_t *anterior, *atual = *inicio;
-        int a = 0;
-        a = strncmp(parametro.dados, atual->dados, sizeof(inicio));
-        while(atual != NULL && strncmp(parametro.dados, atual->dados, sizeof(inicio)) < 0){
+        while(atual != NULL && strncmp(atual->dados, parametro.dados, sizeof(atual->dados)) < 0){
             anterior = atual;
             atual = atual->proximo;
         }
-        if(strncmp(parametro.dados, atual->dados, sizeof(inicio)) == 0){
-            //palavra ja esta na lista
-        }
-        else {
+        if(atual == *inicio){ //insere no incio
+            novo->proximo = (*inicio);
+            *inicio = novo;
+        } else{
             novo->proximo = atual;
             anterior->proximo = novo;
         }

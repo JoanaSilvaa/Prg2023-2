@@ -15,4 +15,4 @@ add_executable(Prog2 main.c
         ../libprg/src/include/libprg/Lista_encadeada.h
         Interface.h
         ../libprg/src/include/libprg/Lista_encadeada.h
-)
+        ../libprg/src/include/libprg/Lista_encadeada.h)

@@ -23,9 +23,9 @@ typedef struct no{
 } no_t;
 
 typedef struct tipo{
-    int dado;
     char dados[10];
-    struct no* proximo;
+    char senha[10];
+    char nome[30];
 } tipo;
 
 
