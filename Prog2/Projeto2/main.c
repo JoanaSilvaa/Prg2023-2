@@ -29,6 +29,7 @@ int main() {
                 exit(EXIT_FAILURE);
             }
             fclose(arq);
+            destruir(&inicio);
             break;
         }
 
