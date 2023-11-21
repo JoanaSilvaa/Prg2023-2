@@ -128,7 +128,7 @@ int Compara(no_t** inicio,struct tipo parametro){
         return 0;
     }
 
-    for (int i = 0; i < 3; ++i) {
+    for (int i = 0; i < sizeof(parametro.dados); ++i) {
         novo->dados[i] = parametro.dados[i];
     }
 
