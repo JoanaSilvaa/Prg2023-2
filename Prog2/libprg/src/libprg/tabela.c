@@ -2,6 +2,8 @@
 // Created by aluno on 21/11/23.
 //
 #include "../include/libprg/tabela.h"
+//#include "../include/libprg/Lista_encadeada.h"
+
 
 dicionario_t *criar_dicionario(int m) {
     dicionario_t *d = NULL;
@@ -83,6 +85,7 @@ bool inserir(dicionario_t *d, char *chave, pessoa_t *valor) {
     d->vetor[indice] = no;
 return true;
 }
+
 pessoa_t *buscar_hash(dicionario_t *d, char *chave) {
     int indice = hash(chave, d->tamanho);
     if (d->vetor[indice] != NULL) {
@@ -112,4 +115,57 @@ char * copia_string(char *s) {
     }
     strcpy(copia, s);
     return copia;
+}
+
+/*
+void destruir_dicionario_lista_encadeada(dicionario_t *d) {
+    if (d != NULL) {
+        for (int i = 0; i < d->tamanho; ++i) {
+            destruir(&d->vetor[i]);
+            destruir_no(d->vetor[i]);
+        }
+        free(d->vetor);
+        free(d);
+    }
+}
+*/
+
+void destruir_dicionario_lista_encadeada_2(dicionario_t *d) {
+    if (d != NULL) {
+        for (int i = 0; i < d->tamanho; ++i) {
+            no_t* atual = d->vetor[i];
+            no_t* prox;
+            while(atual != NULL){
+                prox = atual->prox;
+                destruir_no(atual);
+                atual = prox;
+            }
+            *d->vetor = NULL;
+        }
+        free(d->vetor);
+        free(d);
+    }
+}
+
+bool inserir_Lista_encadeada(dicionario_t *d, char *chave, pessoa_t *valor) {
+    int indice = hash(chave, d->tamanho);
+    no_t *no = malloc(sizeof(no_t));
+    if (no == NULL) {
+        return false;
+    }
+    // strdup reserva memória para fazer a cópia da string. Presente em string.h padrão
+    // C23 https://en.cppreference.com/w/c/string/byte/strdup
+    no->chave = strdup(chave);
+    if (no->chave == NULL) {
+        free(no);
+        return false;
+    }
+
+        no->valor = valor;
+        no->prox = NULL;
+
+    // libera a memória se existir um nó anterior na posição
+    destruir_no(d->vetor[indice]);
+    d->vetor[indice] = no;
+    return true;
 }
