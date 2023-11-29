@@ -2,7 +2,7 @@
 // Created by aluno on 21/11/23.
 //
 #include "../include/libprg/tabela.h"
-//#include "../include/libprg/Lista_encadeada.h"
+
 
 
 dicionario_t *criar_dicionario(int m) {
@@ -63,7 +63,7 @@ int hash(const char *chave, int m) {
 return soma % m;
 }
 
-bool inserir(dicionario_t *d, char *chave, pessoa_t *valor) {
+bool inserir_Lista_encadeada(dicionario_t *d, char *chave, pessoa_t *valor) {
     int indice = hash(chave, d->tamanho);
     no_t *no = malloc(sizeof(no_t));
     if (no == NULL) {
@@ -76,13 +76,21 @@ bool inserir(dicionario_t *d, char *chave, pessoa_t *valor) {
        free(no);
         return false;
     }
+
     no->valor = valor;
-    // TODO não está tratando colisões
-    // se houver colisão é necessário usar uma lista encadeada
     no->prox = NULL;
-    // libera a memória se existir um nó anterior na posição
-    destruir_no(d->vetor[indice]);
-    d->vetor[indice] = no;
+
+    if(d->vetor[indice] == NULL){
+        d->vetor[indice] = no;
+    }
+    else{
+        no_t *aux;
+        aux = d->vetor[indice];
+        while (aux->prox != NULL){
+            aux = aux->prox;
+        }
+        aux->prox = no;
+    }
 return true;
 }
 
@@ -97,6 +105,15 @@ pessoa_t *buscar_hash(dicionario_t *d, char *chave) {
         }
     }
     return NULL;
+}
+
+void imprimir_pessoa_Lista_encadeada(dicionario_t *d, char *chave) {
+    pessoa_t *p = buscar_hash_lista_encadeada(d, chave);
+    if (p != NULL) {
+        printf("CPF: %s\tNome: %s\tEmail: %s\n", p->cpf, p->nome, p->email);
+    } else {
+        printf("Pessoa com CPF %s não encontrada\n", chave);
+    }
 }
 
 void imprimir_pessoa(dicionario_t *d, char *chave) {
@@ -117,20 +134,7 @@ char * copia_string(char *s) {
     return copia;
 }
 
-/*
 void destruir_dicionario_lista_encadeada(dicionario_t *d) {
-    if (d != NULL) {
-        for (int i = 0; i < d->tamanho; ++i) {
-            destruir(&d->vetor[i]);
-            destruir_no(d->vetor[i]);
-        }
-        free(d->vetor);
-        free(d);
-    }
-}
-*/
-
-void destruir_dicionario_lista_encadeada_2(dicionario_t *d) {
     if (d != NULL) {
         for (int i = 0; i < d->tamanho; ++i) {
             no_t* atual = d->vetor[i];
@@ -147,7 +151,7 @@ void destruir_dicionario_lista_encadeada_2(dicionario_t *d) {
     }
 }
 
-bool inserir_Lista_encadeada(dicionario_t *d, char *chave, pessoa_t *valor) {
+bool inserir(dicionario_t *d, char *chave, pessoa_t *valor) {
     int indice = hash(chave, d->tamanho);
     no_t *no = malloc(sizeof(no_t));
     if (no == NULL) {
@@ -168,4 +172,19 @@ bool inserir_Lista_encadeada(dicionario_t *d, char *chave, pessoa_t *valor) {
     destruir_no(d->vetor[indice]);
     d->vetor[indice] = no;
     return true;
+}
+
+pessoa_t *buscar_hash_lista_encadeada(dicionario_t *d, char *chave) {
+    int indice = hash(chave, d->tamanho);
+    if (d->vetor[indice] != NULL) {
+        no_t *aux;
+        aux = d->vetor[indice];
+        while (aux != NULL){
+            if (strcmp(aux->chave, chave) == 0) {
+                return aux->valor;
+            }
+            aux = aux->prox;
+        }
+    }
+    return NULL;
 }

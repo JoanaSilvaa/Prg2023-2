@@ -17,4 +17,6 @@ add_executable(Prog2 main.c
         ../libprg/src/include/libprg/Lista_encadeada.h
         ../libprg/src/include/libprg/Lista_encadeada.h
         ../libprg/src/libprg/tabela.c
-        ../libprg/src/include/libprg/tabela.h)
+        ../libprg/src/include/libprg/tabela.h
+        Inteface.c
+        Inteface.h)

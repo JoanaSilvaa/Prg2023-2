@@ -37,6 +37,7 @@ pessoa_t *buscar_hash(dicionario_t *d, char *chave);
 void imprimir_pessoa(dicionario_t *d, char *chave);
 char * copia_string(char *s);
 void destruir_dicionario_lista_encadeada(dicionario_t *d);
-void destruir_dicionario_lista_encadeada_2(dicionario_t *d);
 bool inserir_Lista_encadeada(dicionario_t *d, char *chave, pessoa_t *valor);
+pessoa_t *buscar_hash_lista_encadeada(dicionario_t *d, char *chave);
+void imprimir_pessoa_Lista_encadeada(dicionario_t *d, char *chave);
 #endif //PRG2023_2_TABELA_H
