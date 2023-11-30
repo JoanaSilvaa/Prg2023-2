@@ -11,9 +11,9 @@
 #include <string.h>
 
 typedef struct {
-    char *cpf;
-    char *nome;
-    char *email;
+    char *a;
+    char *b;
+    char *c;
 } pessoa_t;
 
 typedef struct no {

@@ -6,7 +6,7 @@ int main(int argc, char **argv) {
 
     FILE *arq;
     usuario entradas;
-
+    int i = 0;
 
     printf("Login: ");
     scanf("%s", entradas.login);
@@ -14,7 +14,7 @@ int main(int argc, char **argv) {
     printf("Senha: ");
     scanf("%s", entradas.senha);
     printf("\n");
-    dicionario_t *dicionario = criar_dicionario(5);
+    dicionario_t *dicionario = criar_dicionario(50);
 
     if (dicionario == NULL) {
         printf("Não foi possível reservar memória\n");
@@ -23,13 +23,18 @@ int main(int argc, char **argv) {
 
 
     if ((arq = fopen("../database (1).dat", "r")) != NULL){
-        //leitura
-
+        leitura_tabela_hash(arq, i, dicionario);
     }
     else {
-        //Impressão de erro se não abrir arquivo
         fprintf(stderr, "Erro: arquivo nao pode ser aberto\n");
         exit(EXIT_FAILURE);
+    }
+
+    if(buscar_hash_lista_encadeada(dicionario,entradas.login) != 0){
+
+    }
+    else{
+        printf("Login %s ao encontrado\n",entradas.login);
     }
     fclose(arq);
 

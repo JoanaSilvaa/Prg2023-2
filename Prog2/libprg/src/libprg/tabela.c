@@ -25,14 +25,14 @@ dicionario_t *criar_dicionario(int m) {
 }
 
 void destruir_pessoa(pessoa_t *pessoa) {
-    if (pessoa->cpf != NULL) {
-        free(pessoa->cpf);
+    if (pessoa->a != NULL) {
+        free(pessoa->a);
     }
-    if (pessoa->nome != NULL) {
-        free(pessoa->nome);
+    if (pessoa->b != NULL) {
+        free(pessoa->b);
     }
-    if (pessoa->email != NULL) {
-        free(pessoa->email);
+    if (pessoa->c != NULL) {
+        free(pessoa->c);
     }
     free(pessoa);
 }
@@ -110,18 +110,18 @@ pessoa_t *buscar_hash(dicionario_t *d, char *chave) {
 void imprimir_pessoa_Lista_encadeada(dicionario_t *d, char *chave) {
     pessoa_t *p = buscar_hash_lista_encadeada(d, chave);
     if (p != NULL) {
-        printf("CPF: %s\tNome: %s\tEmail: %s\n", p->cpf, p->nome, p->email);
+        printf("%s\t  %s\t  %s\n", p->a, p->b, p->c);
     } else {
-        printf("Pessoa com CPF %s não encontrada\n", chave);
+        printf("%s não encontrada\n", chave);
     }
 }
 
 void imprimir_pessoa(dicionario_t *d, char *chave) {
     pessoa_t *p = buscar_hash(d, chave);
     if (p != NULL) {
-        printf("CPF: %s\tNome: %s\tEmail: %s\n", p->cpf, p->nome, p->email);
+        printf("%s\t  %s\t  %s\n", p->a, p->b, p->c);
     } else {
-        printf("Pessoa com CPF %s não encontrada\n", chave);
+        printf("%s não encontrada\n", chave);
     }
 }
 

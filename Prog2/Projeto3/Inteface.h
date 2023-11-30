@@ -14,4 +14,7 @@ typedef struct usuario{
 } usuario;
 
 
+
+void leitura_tabela_hash(FILE * arq,int i,dicionario_t *d);
+
 #endif //PROG2_INTEFACE_H
