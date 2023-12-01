@@ -13,8 +13,7 @@ typedef struct usuario{
     char nome[30];
 } usuario;
 
-
-
 void leitura_tabela_hash(FILE * arq,int i,dicionario_t *d);
+int buscar_a(dicionario_t *dicionario, usuario entradas);
 
 #endif //PROG2_INTEFACE_H

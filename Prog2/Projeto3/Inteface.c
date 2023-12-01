@@ -15,6 +15,19 @@ void leitura_tabela_hash(FILE * arq,int i,dicionario_t *d){
         p->c = strdup(usuarios.nome);
         inserir_Lista_encadeada(d, p->a, p);
         i = i + sizeof (usuarios);
-        //imprimir_pessoa(d, usuarios.login);
+    }
+}
+int buscar_a(dicionario_t *dicionario, usuario entradas){
+    int aux = 0;
+    pessoa_t *p = buscar_hash_lista_encadeada(dicionario,entradas.login);
+    if (p != 0) {
+        if(aux == strncmp(entradas.senha, p->b, sizeof(entradas.senha))){
+            printf("Ola %s\n",p->c);
+        }
+        else{
+            printf("Senha invalida\n");
+        }
+    } else {
+        printf("Login %s nao encontrado\n", entradas.login);
     }
 }
