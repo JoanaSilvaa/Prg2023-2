@@ -12,7 +12,7 @@ void adicionar(no_t** inicio, int dado){
 }
 // buscar por dados
 
-//BUSCA NÃO ORDENADA
+//BUSCA
 int buscar(no_t** inicio, int dado){
     no_t* atuall = *inicio;
     while(atuall != NULL){
@@ -24,6 +24,10 @@ int buscar(no_t** inicio, int dado){
         }
     }
     return -1;//Valor não existe na lista
+}
+
+int buscar_parametro(no_t** inicio, parametro dado){
+
 }
 
 no_t* imprime(no_t** inicio){

@@ -16,6 +16,11 @@
 #include <stdbool.h>
 #include <string.h>
 
+typedef struct parametro{
+    char *login;
+    char *senha;
+} parametro;
+
 typedef struct no{
     int dado;
     char dados[10];
@@ -33,6 +38,7 @@ void adicionar(no_t** inicio, int dado);
 bool remover(no_t** inicio, int dado);
 void destruir(no_t** inicio);
 int buscar(no_t** inicio, int dado);
+int buscar_parametro(no_t** inicio, parametro dado);
 no_t* imprime(no_t** inicio);
 int tamanho_no_t (no_t** inicio);
 

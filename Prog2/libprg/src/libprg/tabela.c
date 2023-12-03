@@ -97,9 +97,6 @@ return true;
 pessoa_t *buscar_hash(dicionario_t *d, char *chave) {
     int indice = hash(chave, d->tamanho);
     if (d->vetor[indice] != NULL) {
-        // TODO Abaixo só pega o primeiro elemento da lista encadeada
-        // é necessário percorrer a lista encadeada e não apenas o primeiro
-        // elemento
         if (strcmp(d->vetor[indice]->chave, chave) == 0) {
             return d->vetor[indice]->valor;
         }

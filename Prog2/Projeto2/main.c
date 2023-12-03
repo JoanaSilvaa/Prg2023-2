@@ -13,12 +13,8 @@ int main(int argc, char **argv) {
     no_t *inicio = NULL;
     int resposta;
     Entrada entradas;
+    parametro entrada;
 
-    if(argc > 1) {
-
-    }
-
-        else {
             printf("Deseja ver logins ordenado (1, visualizar o projeto lista encadeada)\n"
                    "ou acessar sua conta (2, visualizar o projeto de struct)...\n");
             scanf("%d", &resposta);
@@ -37,30 +33,47 @@ int main(int argc, char **argv) {
                 }
 
                 case 2: {
-                    //menu
-                    printf("Login: ");
-                    scanf("%s", entradas.loginn);
-                    printf("Senha: ");
-                    scanf("%s", entradas.senhaa);
-                    printf("\n");
+                    if (argc > 1) {
+                        entrada.login = argv[1];
+                        entrada.senha = argv[2];
+                        if ((arq = fopen("../database (1).dat", "r")) != NULL) {
+                            leitura(arq, i, inicio);
+                        } else {
+                            //Impressão de erro se não abrir arquivo
+                            fprintf(stderr, "Erro: arquivo nao pode ser aberto\n");
+                            exit(EXIT_FAILURE);
+                        }
+                        //buscar_parametro(&inicio,entrada);
 
-                    //abertura do arquivo
-                    if ((arq = fopen("../database (1).dat", "r")) != NULL) {
-                        // Inicializando a leitura
-                        leitura_2(arq, i, entradas);
-                        //Após leitura
-                        erro();
+                        fclose(arq);
+                        destruir(&inicio);
+
                     } else {
-                        //Impressão de erro se não abrir arquivo
-                        fprintf(stderr, "Erro: arquivo nao pode ser aberto\n");
-                        exit(EXIT_FAILURE);
+                        //menu
+                        printf("Login: ");
+                        scanf("%s", entradas.loginn);
+                        printf("Senha: ");
+                        scanf("%s", entradas.senhaa);
+                        printf("\n");
+
+                        //abertura do arquivo
+                        if ((arq = fopen("../database (1).dat", "r")) != NULL) {
+                            // Inicializando a leitura
+                            leitura_2(arq, i, entradas);
+                            //Após leitura
+                            erro();
+                        } else {
+                            //Impressão de erro se não abrir arquivo
+                            fprintf(stderr, "Erro: arquivo nao pode ser aberto\n");
+                            exit(EXIT_FAILURE);
+                        }
+                        //Fechando o arquivo
+                        fclose(arq);
                     }
-                    //Fechando o arquivo
-                    fclose(arq);
                 }
                 default:
                     break;
             }
-        }
+
     return 0;
 }

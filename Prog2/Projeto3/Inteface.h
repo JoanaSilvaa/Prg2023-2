@@ -13,7 +13,13 @@ typedef struct usuario{
     char nome[30];
 } usuario;
 
+typedef struct parametro{
+    char *login;
+    char *senha;
+} parametro;
+
 void leitura_tabela_hash(FILE * arq,int i,dicionario_t *d);
 int buscar_a(dicionario_t *dicionario, usuario entradas);
+int buscar_b(dicionario_t *dicionario, parametro entradas);
 
 #endif //PROG2_INTEFACE_H
