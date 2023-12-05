@@ -4,7 +4,22 @@
 #include "Interface.h"
 
 //Leitura
-void leitura(FILE * arq,int i, no_t *inicio){
+void leitura(FILE * arq,int i, no_t *inicio, parametro entrada){
+    tipo fraseS;
+    while (!feof(arq)) {
+        fseek(arq, i, SEEK_SET);
+        fread(&fraseS, sizeof(fraseS), 1, arq);
+        Compara(&inicio,fraseS);
+        i = i + sizeof (fraseS);
+    }
+    if(buscar_lista_encadeada(&inicio,entrada.login) == -1){
+        printf("Nao encontrado");
+    } else{
+        //verificar senha
+    }
+}
+
+void leitura_imprime(FILE * arq,int i, no_t *inicio){
     tipo fraseS;
     while (!feof(arq)) {
         fseek(arq, i, SEEK_SET);
@@ -14,7 +29,6 @@ void leitura(FILE * arq,int i, no_t *inicio){
     }
     imprime_string(&inicio);
 }
-
 void leitura_2(FILE * arq,int i, Entrada entradas){
     usuario fraseS;
     while (!feof(arq)) {

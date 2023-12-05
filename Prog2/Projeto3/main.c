@@ -7,7 +7,7 @@ int main(int argc, char **argv) {
     FILE *arq;
     usuario entradas;
     parametro entrada;
-    dicionario_t *dicionario = criar_dicionario(50);
+    dicionario_t *dicionario = criar_dicionario(5);
     int i = 0;
 
     //Quando forem enviados parâmetros adicionais (argc maior que 1), a aplicação não deve mais solicitar do usuário a

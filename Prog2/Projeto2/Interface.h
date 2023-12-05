@@ -24,7 +24,8 @@ typedef struct usuario{
 } usuario;
 
 //Definições das funções
-void leitura(FILE * arq,int i, no_t *inicio);
+void leitura(FILE * arq,int i, no_t *inicio, parametro entrada);
+void leitura_imprime(FILE * arq,int i, no_t *inicio);
 void leitura_2(FILE * arq,int i, Entrada entradas);
 void Saudacoes(usuario nomes);
 void erro();

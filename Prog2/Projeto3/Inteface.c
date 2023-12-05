@@ -25,7 +25,7 @@ void leitura_tabela_hash(FILE * arq,int i,dicionario_t *d){
         i = i + sizeof (usuarios);
     }
 }
-int buscar_a(dicionario_t *dicionario, usuario entradas){
+void buscar_a(dicionario_t *dicionario, usuario entradas){
     //cria um inteiro auxiliar
     int aux = 0;
     //busca a chave na tabela hash se não encontrar a chave printa que o login não foi encontrado
@@ -44,7 +44,7 @@ int buscar_a(dicionario_t *dicionario, usuario entradas){
     }
 }
 //faz a mesma coisa que o a só que com os parametros digitados via linha de comando
-int buscar_b(dicionario_t *dicionario, parametro entradas){
+void buscar_b(dicionario_t *dicionario, parametro entradas){
     int aux = 0;
     pessoa_t *p = buscar_hash_lista_encadeada(dicionario,entradas.login);
     if (p != 0) {

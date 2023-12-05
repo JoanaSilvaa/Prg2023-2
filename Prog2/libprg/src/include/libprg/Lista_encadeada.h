@@ -19,6 +19,7 @@
 typedef struct parametro{
     char *login;
     char *senha;
+    char *nome;
 } parametro;
 
 typedef struct no{
@@ -38,7 +39,7 @@ void adicionar(no_t** inicio, int dado);
 bool remover(no_t** inicio, int dado);
 void destruir(no_t** inicio);
 int buscar(no_t** inicio, int dado);
-int buscar_parametro(no_t** inicio, parametro dado);
+int buscar_lista_encadeada(no_t** inicio, char dado[]);
 no_t* imprime(no_t** inicio);
 int tamanho_no_t (no_t** inicio);
 

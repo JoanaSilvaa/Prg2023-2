@@ -21,7 +21,7 @@ int main(int argc, char **argv) {
             switch (resposta) {
                 case 1: {
                     if ((arq = fopen("../database (1).dat", "r")) != NULL) {
-                        leitura(arq, i, inicio);
+                        leitura_imprime(arq, i, inicio);
                     } else {
                         //Impressão de erro se não abrir arquivo
                         fprintf(stderr, "Erro: arquivo nao pode ser aberto\n");
@@ -37,14 +37,13 @@ int main(int argc, char **argv) {
                         entrada.login = argv[1];
                         entrada.senha = argv[2];
                         if ((arq = fopen("../database (1).dat", "r")) != NULL) {
-                            leitura(arq, i, inicio);
+                            leitura(arq, i, inicio, entrada);
+
                         } else {
                             //Impressão de erro se não abrir arquivo
                             fprintf(stderr, "Erro: arquivo nao pode ser aberto\n");
                             exit(EXIT_FAILURE);
                         }
-                        //buscar_parametro(&inicio,entrada);
-
                         fclose(arq);
                         destruir(&inicio);
 

@@ -26,9 +26,6 @@ int buscar(no_t** inicio, int dado){
     return -1;//Valor não existe na lista
 }
 
-int buscar_parametro(no_t** inicio, parametro dado){
-
-}
 
 no_t* imprime(no_t** inicio){
     no_t* atuall = *inicio;
@@ -183,3 +180,13 @@ int remover_ordenada(no_t** inicio, int dado) {
     return 0;
 }
 
+int buscar_lista_encadeada(no_t** inicio, char dado[]) {
+        no_t* aux = *inicio;
+        while (aux != NULL){
+            if (strcmp(aux->dados, dado) == 0) {
+                return aux->dado;
+            }
+            aux = aux->proximo;
+        }
+    return -1;
+}
