@@ -1,13 +1,26 @@
+//Baseado na analise do tempo, pude observar que ele se comporta de maneira diferente de acordo com o tamanho do dicionario
+//testei 3 tamanhos de dicionarios, de 5, 50 e 5000 que me levaram a concluir que nesse caso o melhor caso foi o de 50, cujo
+//o valor é mais proximo do numero de usarios do arquivo base.
+// O pior caso foi o de 5, onde as listas encadeadas ficaram maiores, aumentando de forma inversamente proporcional.
+//
+//Para essa analise foi usado o sistema operacional do linux, mas como não foram feitas multiplos testes, não consegui
+// ter um resultado muito preciso.
+//
+//Em vista disso, coloquei a função de tempo disponibilizada pelo Emerson no inicio do semestre, usando o sistema operacional
+//do windows (sistema que utilizo no meu computador pessoal), nesse caso o tempo se comportou de maneira parecida quando falamos
+//de melhor caso, mas de maneira totalmente equivocada quando falamos de analise no tempo realmente.
+
 #include <stdio.h>
 #include "../libprg/src/include/libprg/tabela.h"
 #include "Inteface.h"
+#include <sys/time.h>
 
 int main(int argc, char **argv) {
 
     FILE *arq;
     usuario entradas;
     parametro entrada;
-    dicionario_t *dicionario = criar_dicionario(5);
+    dicionario_t *dicionario = criar_dicionario(1);
     int i = 0;
 
     //Quando forem enviados parâmetros adicionais (argc maior que 1), a aplicação não deve mais solicitar do usuário a
@@ -15,6 +28,13 @@ int main(int argc, char **argv) {
     // (resultar em uma resposta após encontrar um login ou percorrer toda a lista sem encontrar,
     // encerrando o aplicativo ao fim da busca).
     if(argc > 1){
+        clock_t start, end;
+        double cpu_time_used;
+
+        // Iniciando tomada de tempo
+        start = clock();
+
+
         entrada.login= argv[1];
         entrada.senha= argv[2];
 
@@ -33,6 +53,10 @@ int main(int argc, char **argv) {
         //busca no dicionario pelo ponteiro
         buscar_b(dicionario, entrada);
 
+        end = clock();
+
+        cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+        printf("Tempo gasto de CPU: %f segundos.\n", cpu_time_used);
     }
     else {
         // a interface deve solicitar que o usuário digite o login, depois a senha, realizando a busca pelo usuário após
