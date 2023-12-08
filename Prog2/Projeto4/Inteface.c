@@ -5,8 +5,7 @@
 #include "Inteface.h"
 #include "../libprg/src/include/libprg/arvore.h"
 
-void leitura_tabela_hash(FILE * arq,int i) {
-  //criar arvore
+void leitura_arv(FILE * arq,int i, no_t Raiz) {
     usuarios entradas;
     //enquanto o arquivo não estiver chego no fim
     while (!feof(arq)) {
@@ -14,7 +13,11 @@ void leitura_tabela_hash(FILE * arq,int i) {
         //inciciada em 0
         fseek(arq, i, SEEK_SET);
         fread(&entradas, sizeof(entradas), 1, arq);
-        //inserir na arvore
+        inserir_valor_string(&Raiz,entradas.login);
     }
-    //buscar na arvore
+
+}
+
+void buscar_arv(usuarios entradas, no_t *Raiz){
+    busca_string(Raiz, entradas.login);
 }
