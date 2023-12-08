@@ -14,6 +14,7 @@
 #include "../libprg/src/include/libprg/tabela.h"
 #include "Inteface.h"
 #include <sys/time.h>
+#include <time.h>
 
 int main(int argc, char **argv) {
 
