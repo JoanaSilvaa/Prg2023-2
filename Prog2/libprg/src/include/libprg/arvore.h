@@ -10,19 +10,30 @@
 #include <stdlib.h>
 #include <string.h>
 
+//struct que recebe as entradas
+typedef struct usuarios{
+    char login[10];
+    char senha[10];
+    char nome[30];
+    int retorno;
+}usuarios ;
+
 typedef struct no {
     int valor;
-    char valore;
+    char valore[10];
+    char valore1[10];
+    char valore2[30];
     struct no *esquerda;
     struct no *direita;
 } no_t;
 
 no_t *criar_no(int valor);
-no_t *criar_no_string(char valor);
+no_t *criar_no_string(usuarios valor);
 void destruir_no_arv(no_t *no);
 no_t *inserir_valor(no_t *raiz, int valor);
-no_t *inserir_valor_string(no_t *raiz, char valor);
+no_t *inserir_valor_string(no_t *raiz, usuarios valor);
 bool busca(no_t *raiz, int valor);
-bool busca_string(no_t *raiz, char valor);
+bool busca_string(no_t *raiz, usuarios valor);
+usuarios busca_s(no_t *raiz, usuarios valor);
 
 #endif //PRG2023_2_ARVORE_H
