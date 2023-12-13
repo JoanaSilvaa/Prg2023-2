@@ -5,6 +5,7 @@
 #ifndef PRG2023_2_ARVORE_H
 #define PRG2023_2_ARVORE_H
 
+//declaração das biblioteas
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -17,16 +18,17 @@ typedef struct usuarios{
     char nome[30];
 }usuarios ;
 
+//struct para os nós
 typedef struct no {
     int valor;
     char valore[10];
     char senha[10];
     char nome[30];
-    usuarios *us;
     struct no *esquerda;
     struct no *direita;
 } no_t;
 
+//declaração das funções
 no_t *criar_no(int valor);
 no_t *criar_no_string(usuarios valor);
 void destruir_no_arv(no_t *no);

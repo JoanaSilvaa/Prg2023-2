@@ -4,10 +4,6 @@
 
 // importada através de funcionalidade fetch content do CMake (estratégia do Professor Emerson).
 
-//A aplicação deve ser capaz de verificar a senha realizando a busca pela árvore binária.
-
-//Realize comentários em seu código, explicando o que cada função realiza e inclua comentários em trechos de código que
-
 int main() {
 
     FILE *arq;
@@ -22,7 +18,7 @@ int main() {
     teste1.login[4] = 'a';
 
 
-    //reclarando uma struct para receber as entradas
+    //declarando uma struct para receber as entradas
     usuarios entradas;
     //criando a Raiz
     no_t *Raiz = criar_no_string(teste1);
@@ -38,8 +34,8 @@ int main() {
 
 
     //Abertura do arquivo e mensagem quando não é possivel abrir arquivo
-    //Abertura do arquivo e mensagem quando não é possivel abrir arquivo
     if ((arq = fopen("../database (1).dat", "r")) != NULL) {
+        //inicia a leitura do arquivo na interface.c
         leitura_arv(arq,i,*Raiz,entradas);
     } else {
         fprintf(stderr, "Erro: arquivo nao pode ser aberto\n");
