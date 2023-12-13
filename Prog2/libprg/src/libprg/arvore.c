@@ -44,7 +44,7 @@ void destruir_no_arv(no_t *no) {
 }
 // todo nó é raiz de uma subárvore
 no_t *inserir_valor(no_t *raiz, int valor){
-    //quando encontrar a raiz nula cria novo no
+    //quando encontrar a raiz nula cria novo nó
     if (raiz == NULL) {
         return criar_no(valor);
     //se o valor passado como parametro para inserir for menor chama a função inserir novamente pelo no da esquerda
