@@ -15,22 +15,12 @@ void leitura_arv(FILE * arq,int i, no_t Raiz,usuarios entrada) {
          inserir_valor_string(&Raiz,entradas);
         i = i + sizeof (entradas);
     }
+    buscar_arv(entrada,&Raiz);
 
-    busca_s(&Raiz, entrada);
-
-    if(buscar_arv(entrada,&Raiz) == 0){
-        printf("Login nao encontrado");
-    } else {
-        if(strncmp(entradas.senha, entrada.senha, sizeof(entradas.senha)) == 0){
-            printf("Ola %s", entradas.nome);
-        } else{
-            printf("Senha invalida");
-        }
-    }
     destruir_no_arv(&Raiz);
 }
 
 int buscar_arv(usuarios entradas, no_t *Raiz){
-    int r =busca_string(Raiz, entradas);
+    int r = busca_string(Raiz, entradas);
     return r;
 }

@@ -11,5 +11,4 @@
 //Declaração das funções
 void leitura_arv(FILE * arq,int i, no_t Raiz,usuarios entrada);
 int buscar_arv(usuarios entradas, no_t *Raiz);
-int senhas(usuarios entradas, no_t *Raiz, usuarios entrada);
 #endif //PROG2_INTEFACE_H

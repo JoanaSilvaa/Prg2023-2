@@ -15,14 +15,14 @@ typedef struct usuarios{
     char login[10];
     char senha[10];
     char nome[30];
-    int retorno;
 }usuarios ;
 
 typedef struct no {
     int valor;
     char valore[10];
-    char valore1[10];
-    char valore2[30];
+    char senha[10];
+    char nome[30];
+    usuarios *us;
     struct no *esquerda;
     struct no *direita;
 } no_t;
@@ -33,7 +33,6 @@ void destruir_no_arv(no_t *no);
 no_t *inserir_valor(no_t *raiz, int valor);
 no_t *inserir_valor_string(no_t *raiz, usuarios valor);
 bool busca(no_t *raiz, int valor);
-bool busca_string(no_t *raiz, usuarios valor);
-usuarios busca_s(no_t *raiz, usuarios valor);
+int busca_string(no_t *raiz, usuarios valor);
 
 #endif //PRG2023_2_ARVORE_H

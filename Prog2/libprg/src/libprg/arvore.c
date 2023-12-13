@@ -13,12 +13,12 @@ no_t *criar_no(int valor){
 
 no_t *criar_no_string(usuarios valor){
     no_t *no = (no_t*) malloc(sizeof(no_t));
-    for (int i = 0; i < 10; ++i) {
+    for (int i = 0; i < sizeof(no->valore); ++i) {
         no->valore[i] = valor.login[i];
-        no->valore1[i] = valor.senha[i];
+        no->senha[i] = valor.senha[i];
     }
-    for (int i = 0; i < 30; ++i) {
-        no->valore2[i] = valor.nome[i];
+    for (int i = 0; i < sizeof(no->nome); ++i) {
+        no->nome[i] = valor.nome[i];
     }
     no->esquerda = no->direita = NULL;
     return no;
@@ -62,20 +62,25 @@ bool busca(no_t *raiz, int valor){
     return busca(raiz->direita, valor);
 }
 
-bool busca_string(no_t *raiz, usuarios valor){
-    if (raiz == NULL) return false;
-    if (strcmp(valor.login,raiz->valore) == 0) return true;
-    if (strcmp(valor.login,raiz->valore) < 0) return busca_string(raiz->esquerda, valor);
+int busca_string(no_t *raiz, usuarios valor){
+    if (raiz == NULL){
+        printf("Usuario nao localizado");
+        return 1;
+    }
+    if (strcmp(valor.login,raiz->valore) == 0){
+        if(strcmp(valor.senha,raiz->senha) == 0){
+            printf("Ola %s", raiz->nome);
+            return 0;
+        } else{
+            printf("Senha invalida");
+            return 0;
+        }
+    }
+    if (strcmp(valor.login,raiz->valore) < 0)
+        return busca_string(raiz->esquerda, valor);
+
     return busca_string(raiz->direita, valor);
 }
 
-usuarios busca_s(no_t *raiz, usuarios valor){
-    if (raiz == NULL) {
-        valor.retorno = -1 ;
-        return valor ;
-    }
-    if (strcmp(valor.login,raiz->valore) == 0) return valor;
-    if (strcmp(valor.login,raiz->valore) < 0) return busca_s(raiz->esquerda, valor);
-    return busca_s(raiz->direita, valor);
-}
+
 
